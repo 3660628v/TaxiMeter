@@ -21,6 +21,7 @@
 		1C0C7DB9176B1FC900BB8B9D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */; };
 		1CC84C56176B24C900728786 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC84C55176B24C900728786 /* MapViewController.m */; };
 		1CC84C58176B27D000728786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC84C57176B27D000728786 /* MapKit.framework */; };
+		1CC84C5B176B3B5000728786 /* ManualEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC84C5A176B3B5000728786 /* ManualEntryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		1CC84C54176B24C900728786 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		1CC84C55176B24C900728786 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		1CC84C57176B27D000728786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1CC84C59176B3B5000728786 /* ManualEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryViewController.h; sourceTree = "<group>"; };
+		1CC84C5A176B3B5000728786 /* ManualEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +68,6 @@
 		1C0C7D89176B1EB700BB8B9D = {
 			isa = PBXGroup;
 			children = (
-				1CC84C57176B27D000728786 /* MapKit.framework */,
-				1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */,
 				1C0C7D9B176B1EB700BB8B9D /* TaxiMeter */,
 				1C0C7D94176B1EB700BB8B9D /* Frameworks */,
 				1C0C7D93176B1EB700BB8B9D /* Products */,
@@ -84,6 +85,8 @@
 		1C0C7D94176B1EB700BB8B9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CC84C57176B27D000728786 /* MapKit.framework */,
+				1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */,
 				1C0C7D95176B1EB700BB8B9D /* UIKit.framework */,
 				1C0C7D97176B1EB700BB8B9D /* Foundation.framework */,
 				1C0C7D99176B1EB700BB8B9D /* CoreGraphics.framework */,
@@ -97,6 +100,8 @@
 				1C0C7DA4176B1EB700BB8B9D /* AppDelegate.h */,
 				1C0C7DA5176B1EB700BB8B9D /* AppDelegate.m */,
 				1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */,
+				1CC84C59176B3B5000728786 /* ManualEntryViewController.h */,
+				1CC84C5A176B3B5000728786 /* ManualEntryViewController.m */,
 				1C0C7DB0176B1EB800BB8B9D /* ViewController.h */,
 				1C0C7DB1176B1EB800BB8B9D /* ViewController.m */,
 				1CC84C54176B24C900728786 /* MapViewController.h */,
@@ -190,6 +195,7 @@
 				1C0C7DA6176B1EB700BB8B9D /* AppDelegate.m in Sources */,
 				1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */,
 				1CC84C56176B24C900728786 /* MapViewController.m in Sources */,
+				1CC84C5B176B3B5000728786 /* ManualEntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
