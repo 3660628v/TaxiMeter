@@ -18,6 +18,9 @@
 		1C0C7DAC176B1EB700BB8B9D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0C7DAB176B1EB700BB8B9D /* Default-568h@2x.png */; };
 		1C0C7DAF176B1EB800BB8B9D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */; };
 		1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C7DB1176B1EB800BB8B9D /* ViewController.m */; };
+		1C0C7DB9176B1FC900BB8B9D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */; };
+		1CC84C56176B24C900728786 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC84C55176B24C900728786 /* MapViewController.m */; };
+		1CC84C58176B27D000728786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC84C57176B27D000728786 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,10 @@
 		1C0C7DAE176B1EB800BB8B9D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1C0C7DB0176B1EB800BB8B9D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1C0C7DB1176B1EB800BB8B9D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1CC84C54176B24C900728786 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		1CC84C55176B24C900728786 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		1CC84C57176B27D000728786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC84C58176B27D000728786 /* MapKit.framework in Frameworks */,
+				1C0C7DB9176B1FC900BB8B9D /* CoreLocation.framework in Frameworks */,
 				1C0C7D96176B1EB700BB8B9D /* UIKit.framework in Frameworks */,
 				1C0C7D98176B1EB700BB8B9D /* Foundation.framework in Frameworks */,
 				1C0C7D9A176B1EB700BB8B9D /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +65,8 @@
 		1C0C7D89176B1EB700BB8B9D = {
 			isa = PBXGroup;
 			children = (
+				1CC84C57176B27D000728786 /* MapKit.framework */,
+				1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */,
 				1C0C7D9B176B1EB700BB8B9D /* TaxiMeter */,
 				1C0C7D94176B1EB700BB8B9D /* Frameworks */,
 				1C0C7D93176B1EB700BB8B9D /* Products */,
@@ -88,6 +99,8 @@
 				1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */,
 				1C0C7DB0176B1EB800BB8B9D /* ViewController.h */,
 				1C0C7DB1176B1EB800BB8B9D /* ViewController.m */,
+				1CC84C54176B24C900728786 /* MapViewController.h */,
+				1CC84C55176B24C900728786 /* MapViewController.m */,
 				1C0C7D9C176B1EB700BB8B9D /* Supporting Files */,
 			);
 			path = TaxiMeter;
@@ -176,6 +189,7 @@
 				1C0C7DA2176B1EB700BB8B9D /* main.m in Sources */,
 				1C0C7DA6176B1EB700BB8B9D /* AppDelegate.m in Sources */,
 				1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */,
+				1CC84C56176B24C900728786 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +312,7 @@
 				1C0C7DB7176B1EB800BB8B9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
