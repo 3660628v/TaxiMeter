@@ -7,13 +7,12 @@
 //
 
 #import "MapViewController.h"
-
 @interface MapViewController ()
 
 @end
 
 @implementation MapViewController
-
+@synthesize manager, myCurrentLocation,mapView ;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +26,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    manager = [[CLLocationManager alloc]init];
+    manager.desiredAccuracy = kCLLocationAccuracyBest;
+    manager.delegate = self;
+    manager.distanceFilter = 5.0f;
+    [manager startUpdatingLocation];
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +40,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    myCurrentLocation = [locations lastObject];
+    mapView.mapType = MKMapTypeSatellite;
+    mapView.region = MKCoordinateRegionMake(myCurrentLocation.coordinate, MKCoordinateSpanMake(0.1f, 0.1f));
+	mapView.showsUserLocation = YES;
+	mapView.zoomEnabled = YES;
+}
+
 
 @end
