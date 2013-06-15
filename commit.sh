@@ -1,3 +1,5 @@
+#This file is to automate the commit process
+
 #!/bin/bash
 
 git add *.*
