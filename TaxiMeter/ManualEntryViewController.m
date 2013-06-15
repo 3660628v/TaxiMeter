@@ -49,8 +49,6 @@
     NSLog(@"%@",url);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     getCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    
-//    [self checkDistance];
 }
 
 
