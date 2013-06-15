@@ -45,8 +45,12 @@
 - (IBAction)calcFare:(id)sender {
     NSString *address = [[NSString alloc]init];
     address = [addressTo text];
+    if ([address length] == 0) {
+        [self showAlertWithString:@"Nothing is entered!"];
+        return;
+    }
     NSString *url = [[self class] generateURLGeoLocationWithAddress:address];
-    NSLog(@"%@",url);
+//    NSLog(@"%@",url);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     getCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
 }
@@ -148,6 +152,11 @@
     tempDic = [tempDic objectForKey:@"distance"];
     int distance = [[tempDic objectForKey:@"value"]intValue];
     return distance;
+}
+
+-(void)showAlertWithString:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 @end
