@@ -13,7 +13,7 @@
 @end
 
 @implementation ManualEntryViewController
-@synthesize addressTo, responseData, latitude, longitude, getCoord, getDistance, manager, myCurrentLocation;
+@synthesize addressTo, responseData, latitude, longitude, getCoord, getDistance, manager, myCurrentLocation, distance;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,16 +40,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)calcFare:(id)sender {
-//    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
     NSString *address = [[NSString alloc]init];
     address = [addressTo text];
-    NSString *encodedAddress = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) address,NULL,(CFStringRef) @"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8 ));
-   NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", encodedAddress];
-//    NSString *url = @"http://maps.googleapis.com/maps/api/geocode/json?address=Reunification%20Palace&sensor=true";
+    NSString *url = [[self class] generateURLGeoLocationWithAddress:address];
     NSLog(@"%@",url);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     getCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
@@ -59,8 +55,6 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSLog(@"hahahahahahahaha");
-
     [addressTo resignFirstResponder];
     return YES;
 }
@@ -85,38 +79,26 @@
     // convert to JSON
     NSError *myError = nil;
     if (connection == getCoord) {
-        NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:kNilOptions error:&myError];
-        
-        // show all values
-        NSArray *temp2 = [res objectForKey:@"results"];
-        NSDictionary *temp3 = temp2[0];
-        NSDictionary *temp4 = [temp3 objectForKey:@"geometry"];
-        NSDictionary *temp5 = [temp4 objectForKey:@"location"];
-        NSNumber *lat = [temp5 objectForKey:@"lat"];
-        NSNumber *lng = [temp5 objectForKey:@"lng"];
-        self.latitude = lat;
-        self.longitude = lng;
-        NSLog(@"%@, %@", lat, lng);
+        Coord2D res = [[self class]getCoordJSONParserWithData:self.responseData error:myError];
+        self.latitude = [NSNumber numberWithFloat:res.lattitude];
+        self.longitude = [NSNumber numberWithFloat:res.longitude];
+        NSLog(@"%@, %@", self.latitude, self.longitude);
         [self checkDistance];
     }
     
     if (connection == getDistance) {
-        NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:kNilOptions error:&myError];
-//        NSLog(@"%@", res);
-        NSArray *temp1 = [res objectForKey:@"rows"];
-        NSDictionary *temp2 = temp1[0];
-        NSArray *temp3 = [temp2 objectForKey:@"elements"];
-        NSDictionary *temp4 = temp3[0];
-        NSDictionary *temp5 = [temp4 objectForKey:@"distance"];
-        NSString *distance = [temp5 objectForKey:@"text"];
-        NSLog(@"%@", distance);
+        NSString *distance1 = [[self class]getDistanceInKmWithData:self.responseData error:myError];
+        distance = [[self class]getDistanceinMeterWithData:self.responseData error:myError];
+        NSLog(@"%@ %i", distance1, distance);
     }
 }
 
 -(void)checkDistance{
-    NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%@,%@&sensor=true",myCurrentLocation.coordinate.latitude, myCurrentLocation.coordinate.longitude, self.latitude, self.longitude];
-    NSLog(@"%@", url);
+    NSString *url = [[self class]generateURLDistanceEnquiryFromLat:myCurrentLocation.coordinate.latitude fromLng:myCurrentLocation.coordinate.longitude toLat:self.latitude.floatValue toLng:self.longitude.floatValue];
+    //Create a HTTP request
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    //send the request
     getDistance = [[NSURLConnection alloc]initWithRequest:request delegate:self];
 
 }
@@ -125,5 +107,49 @@
     myCurrentLocation = [locations lastObject];
 }
 
++(NSString *)generateURLGeoLocationWithAddress:(NSString *)address{
+    NSString *encodedAddress = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) address,NULL,(CFStringRef) @"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8 ));
+    NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", encodedAddress];
+    return url;
+}
+
++(NSString *)generateURLDistanceEnquiryFromLat:(float)fromLat fromLng:(float)fromLng toLat:(float)toLat toLng:(float)toLng{
+    NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%f,%f&sensor=true",fromLat, fromLng, toLat, toLng];
+    return url;
+}
+
++(Coord2D)getCoordJSONParserWithData:(NSData *)data error:(NSError *)error{
+    Coord2D ret;
+    NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSArray *tempArray = [temp objectForKey:@"results"];
+    temp = tempArray[0];
+    temp = [temp objectForKey:@"geometry"];
+    temp = [temp objectForKey:@"location"];
+    ret.lattitude = [[temp objectForKey:@"lat"]floatValue];
+    ret.longitude = [[temp objectForKey:@"lng"]floatValue];
+    return ret;
+}
+
++(NSString *)getDistanceInKmWithData:(NSData *)data error:(NSError *)error{
+    NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSArray *tempArray = [tempDic objectForKey:@"rows"];
+    tempDic = tempArray[0];
+    tempArray = [tempDic objectForKey:@"elements"];
+    tempDic = tempArray[0];
+    tempDic = [tempDic objectForKey:@"distance"];
+    NSString * distance = [tempDic objectForKey:@"text"];
+    return distance;
+}
+
++(int)getDistanceinMeterWithData:(NSData *)data error:(NSError *)error{
+    NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSArray *tempArray = [tempDic objectForKey:@"rows"];
+    tempDic = tempArray[0];
+    tempArray = [tempDic objectForKey:@"elements"];
+    tempDic = tempArray[0];
+    tempDic = [tempDic objectForKey:@"distance"];
+    int distance = [[tempDic objectForKey:@"value"]intValue];
+    return distance;
+}
 
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+- (IBAction)callPolice:(id)sender;
+@property (weak, nonatomic) IBOutlet UIPickerView *taxiPicker;
 @property (strong, nonatomic) NSArray *taxiList;
 @end

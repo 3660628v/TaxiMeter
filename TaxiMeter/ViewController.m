@@ -40,4 +40,9 @@
     return taxiList[row];
 }
 
+- (IBAction)callPolice:(id)sender {
+    NSString *theCall = [NSString stringWithFormat:@"telprompt://113"];
+    NSLog(@"making the call at 113");
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:theCall]];
+}
 @end

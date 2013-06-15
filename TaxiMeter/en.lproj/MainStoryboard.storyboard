@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Welcome to Vietnam!-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
@@ -13,6 +13,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InI-KC-v5z">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="wZa-g2-yRD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="I'm done choosing">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,25 +55,110 @@
                                     <segue destination="jki-NM-4ms" kind="push" id="UMK-pI-ZGZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ww-fT-jv1">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Call Police">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="callPolice:" destination="2" eventType="touchUpInside" id="gQP-B3-Bgu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdZ-Zz-18R">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Enter Fare Manually">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QC7-Ls-ona" firstAttribute="centerX" secondItem="InI-KC-v5z" secondAttribute="centerX" type="default" id="Ixk-19-Sy9"/>
-                            <constraint firstItem="InI-KC-v5z" firstAttribute="trailing" secondItem="qru-DK-y5C" secondAttribute="trailing" type="default" id="UFf-T9-1Lt"/>
+                            <constraint firstItem="9ww-fT-jv1" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5h4-LF-qyl"/>
+                            <constraint firstItem="sdZ-Zz-18R" firstAttribute="baseline" secondItem="InI-KC-v5z" secondAttribute="baseline" type="default" id="9n0-Jr-Ubf"/>
+                            <constraint firstItem="9ww-fT-jv1" firstAttribute="baseline" secondItem="QC7-Ls-ona" secondAttribute="baseline" type="default" id="CnL-FI-pmB"/>
+                            <constraint firstItem="qru-DK-y5C" firstAttribute="centerX" secondItem="InI-KC-v5z" secondAttribute="centerX" type="default" id="Cq9-Ow-sbg"/>
+                            <constraint firstItem="qru-DK-y5C" firstAttribute="top" secondItem="3" secondAttribute="top" constant="28" id="J3a-bO-jBC"/>
+                            <constraint firstItem="qru-DK-y5C" firstAttribute="trailing" secondItem="QC7-Ls-ona" secondAttribute="trailing" type="default" id="NBX-2A-IQU"/>
+                            <constraint firstItem="sdZ-Zz-18R" firstAttribute="top" secondItem="3" secondAttribute="top" constant="208" id="QH1-u0-Jph"/>
+                            <constraint firstItem="9ww-fT-jv1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="82" id="Qoj-Wi-ley"/>
+                            <constraint firstItem="InI-KC-v5z" firstAttribute="centerX" secondItem="sdZ-Zz-18R" secondAttribute="centerX" type="default" id="Rji-5Z-EbP"/>
+                            <constraint firstItem="sdZ-Zz-18R" firstAttribute="centerX" secondItem="Nfu-1r-ZVp" secondAttribute="centerX" type="default" id="VYT-P9-bVd"/>
                             <constraint firstItem="Nfu-1r-ZVp" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="VfB-po-y7H"/>
-                            <constraint firstItem="Nfu-1r-ZVp" firstAttribute="centerX" secondItem="qru-DK-y5C" secondAttribute="centerX" type="default" id="a8L-1i-fKT"/>
                             <constraint firstItem="Nfu-1r-ZVp" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="d3E-wS-Xla"/>
                             <constraint firstItem="Nfu-1r-ZVp" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="d4x-hX-5AW"/>
-                            <constraint firstItem="qru-DK-y5C" firstAttribute="top" secondItem="3" secondAttribute="top" constant="55" id="lQy-vx-TNk"/>
-                            <constraint firstItem="InI-KC-v5z" firstAttribute="top" secondItem="3" secondAttribute="top" constant="192" id="mgi-uy-FK0"/>
-                            <constraint firstItem="QC7-Ls-ona" firstAttribute="top" secondItem="3" secondAttribute="top" constant="130" id="r5y-UZ-y5E"/>
+                            <constraint firstItem="InI-KC-v5z" firstAttribute="top" secondItem="3" secondAttribute="top" constant="146" id="sIY-rz-0DO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ln7-ab-zEF"/>
+                    <navigationItem key="navigationItem" title="Welcome to Vietnam!" id="Ln7-ab-zEF"/>
+                    <connections>
+                        <outlet property="taxiPicker" destination="Nfu-1r-ZVp" id="aHP-y2-HQs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="944" y="74"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pKh-U7-zI8">
+            <objects>
+                <viewController id="z45-iL-icO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5l8-Wp-Ir9">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGE-Wm-RDu">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Points of Interest">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgA-hp-bD7">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Check Taxi Fare">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKP-TQ-90P">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="About">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mKP-TQ-90P" firstAttribute="centerX" secondItem="cgA-hp-bD7" secondAttribute="centerX" type="default" id="PjM-ch-3j5"/>
+                            <constraint firstItem="cgA-hp-bD7" firstAttribute="centerX" secondItem="CGE-Wm-RDu" secondAttribute="centerX" type="default" id="U77-vq-nnH"/>
+                            <constraint firstItem="mKP-TQ-90P" firstAttribute="centerX" secondItem="5l8-Wp-Ir9" secondAttribute="centerX" type="default" id="b2p-Z2-xZA"/>
+                            <constraint firstItem="cgA-hp-bD7" firstAttribute="top" secondItem="5l8-Wp-Ir9" secondAttribute="top" constant="172" id="gNx-ZA-7mz"/>
+                            <constraint firstItem="mKP-TQ-90P" firstAttribute="top" secondItem="5l8-Wp-Ir9" secondAttribute="top" constant="267" id="gTN-pQ-pGB"/>
+                            <constraint firstItem="CGE-Wm-RDu" firstAttribute="top" secondItem="5l8-Wp-Ir9" secondAttribute="top" constant="88" id="utg-RV-9Vf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ixj-RV-cCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="730" y="825"/>
         </scene>
         <!--Manual Entry View Controller - Manual Entry-->
         <scene sceneID="FUt-Pc-vk8">
@@ -99,9 +187,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQL-6K-Tyj">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="hGP-Sb-hje"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -111,12 +196,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CQL-6K-Tyj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0uw-eu-rmu"/>
                             <constraint firstItem="5hQ-ME-IHt" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="201" id="Bof-ei-VhT"/>
-                            <constraint firstItem="CQL-6K-Tyj" firstAttribute="centerX" secondItem="5hQ-ME-IHt" secondAttribute="centerX" type="default" id="KHf-9p-EWv"/>
+                            <constraint firstItem="CQL-6K-Tyj" firstAttribute="leading" secondItem="rXr-lL-Lc4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ITo-5R-p53"/>
                             <constraint firstItem="SiK-gd-VF2" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="43" id="Qet-JZ-SEV"/>
-                            <constraint firstItem="CQL-6K-Tyj" firstAttribute="centerX" secondItem="SiK-gd-VF2" secondAttribute="centerX" type="default" id="Tzr-35-qXu"/>
-                            <constraint firstItem="5hQ-ME-IHt" firstAttribute="centerX" secondItem="rXr-lL-Lc4" secondAttribute="centerX" type="default" id="kQd-nn-B7p"/>
+                            <constraint firstItem="SiK-gd-VF2" firstAttribute="centerX" secondItem="CQL-6K-Tyj" secondAttribute="centerX" type="default" id="as6-VA-W8l"/>
                             <constraint firstItem="CQL-6K-Tyj" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="87" id="kiz-Xy-2Wh"/>
+                            <constraint firstItem="5hQ-ME-IHt" firstAttribute="centerX" secondItem="CQL-6K-Tyj" secondAttribute="centerX" type="default" id="p7r-js-Afw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Manual Entry" id="GyC-I4-EdL"/>
@@ -208,6 +294,10 @@
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="callPolice:"/>
+                <relationship kind="outlet" name="taxiPicker" candidateClass="UIPickerView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
