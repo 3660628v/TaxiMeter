@@ -82,6 +82,9 @@
     NSError *myError = nil;
     if (connection == getCoord) {
         Coord2D res = [[self class]getCoordJSONParserWithData:self.responseData error:myError];
+        if (res.lattitude == -1000) {
+            return;
+        }
         self.latitude = [NSNumber numberWithFloat:res.lattitude];
         self.longitude = [NSNumber numberWithFloat:res.longitude];
         NSLog(@"%@, %@", self.latitude, self.longitude);
@@ -90,8 +93,16 @@
     
     if (connection == getDistance) {
         NSString *distance1 = [[self class]getDistanceInKmWithData:self.responseData error:myError];
-        distance = [[self class]getDistanceinMeterWithData:self.responseData error:myError];
-        NSLog(@"%@ %i", distance1, distance);
+        if (distance1 ==  nil) {
+            return;
+        }
+        self.distance = [[self class]getDistanceinMeterWithData:self.responseData error:myError];
+        NSLog(@"%@ %i", distance1, self.distance);
+        int fare = [self calFarewithDistance:8300];
+
+        UIAlertView *myAlert = [[UIAlertView alloc]initWithTitle:@"Fare" message:[NSString stringWithFormat:@"You are expected to pay about %d VND", fare] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [myAlert show];
+
     }
 }
 
@@ -112,17 +123,26 @@
 +(NSString *)generateURLGeoLocationWithAddress:(NSString *)address{
     NSString *encodedAddress = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) address,NULL,(CFStringRef) @"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8 ));
     NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", encodedAddress];
+    NSLog(@"%@", url);
     return url;
 }
 
 +(NSString *)generateURLDistanceEnquiryFromLat:(float)fromLat fromLng:(float)fromLng toLat:(float)toLat toLng:(float)toLng{
     NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/distancematrix/json?origins=%f,%f&destinations=%f,%f&sensor=true",fromLat, fromLng, toLat, toLng];
+    NSLog(@"%@", url);
+
     return url;
 }
 
 +(Coord2D)getCoordJSONParserWithData:(NSData *)data error:(NSError *)error{
     Coord2D ret;
     NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSString *status = [temp objectForKey:@"status"];
+    if ([status isEqualToString:@"ZERO_RESULTS"]) {
+        ret.lattitude = -1000;
+        ret.longitude = -1000;
+        return ret;
+    }
     NSArray *tempArray = [temp objectForKey:@"results"];
     temp = tempArray[0];
     temp = [temp objectForKey:@"geometry"];
@@ -134,13 +154,19 @@
 
 +(NSString *)getDistanceInKmWithData:(NSData *)data error:(NSError *)error{
     NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    NSArray *tempArray = [tempDic objectForKey:@"rows"];
-    tempDic = tempArray[0];
-    tempArray = [tempDic objectForKey:@"elements"];
-    tempDic = tempArray[0];
-    tempDic = [tempDic objectForKey:@"distance"];
-    NSString * distance = [tempDic objectForKey:@"text"];
-    return distance;
+    NSString *status = [tempDic objectForKey:@"status"];
+    if ([status isEqualToString:@"OK"]) {
+        NSArray *tempArray = [tempDic objectForKey:@"rows"];
+        tempDic = tempArray[0];
+        tempArray = [tempDic objectForKey:@"elements"];
+        tempDic = tempArray[0];
+        tempDic = [tempDic objectForKey:@"distance"];
+        NSString * distance = [tempDic objectForKey:@"text"];
+        return distance;
+    }
+    else{
+        return nil;
+    }
 }
 
 +(int)getDistanceinMeterWithData:(NSData *)data error:(NSError *)error{
@@ -157,6 +183,27 @@
 -(void)showAlertWithString:(NSString *)message{
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
+}
+
+-(int)calFarewithDistance:(int)_distance{
+    int ret1 = 0;
+    int ret2 = 0;
+    int ret3 = 0;
+    if(_distance < 1000){
+        ret1 = 12000 * distance/1000;
+    }
+    else{
+        if(_distance < 30000){
+            ret1 = 12000;
+            ret2 = ((_distance - 1000)/1000) * 17000;
+        }
+        else{
+            ret1 = 12000;
+            ret2 = 17000 * 29;
+            ret3 = ((_distance - 30000)/1000) * 14000;
+        }
+    }
+    return ret1 + ret2 + ret3;
 }
 
 @end

@@ -32,4 +32,5 @@
 +(NSString *)getDistanceInKmWithData:(NSData *)data error:(NSError *)error;
 +(int)getDistanceinMeterWithData:(NSData *)data error:(NSError *)error;
 -(void)showAlertWithString:(NSString *)message;
+-(int)calFarewithDistance:(int)distance;
 @end
