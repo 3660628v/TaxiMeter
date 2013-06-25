@@ -238,24 +238,24 @@
 }
 
 -(int)calFarewithDistance:(int)_distance{
-    int ret1 = 0;
-    int ret2 = 0;
-    int ret3 = 0;
+    float ret1 = 0;
+    float ret2 = 0;
+    float ret3 = 0;
     if(_distance < 1000){
-        ret1 = 12000 * distance/1000;
+        ret1 = 12000;
     }
     else{
         if(_distance < 30000){
-            ret1 = 12000;
-            ret2 = ((_distance - 1000)/1000) * 17000;
+            ret1 = 12000.0;
+            ret2 = (((float)_distance - 1000.0)/1000.0) * 17000.0;
         }
         else{
             ret1 = 12000;
             ret2 = 17000 * 29;
-            ret3 = ((_distance - 30000)/1000) * 14000;
+            ret3 = (((float)_distance - 30000.0)/1000.0) * 14000.0;
         }
     }
-    return ret1 + ret2 + ret3;
+    return (int)(ret1 + ret2 + ret3);
 }
 
 @end
