@@ -8,19 +8,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TaxiMeter/ManualEntryViewController.m"
-         timestampString = "392983744.968046"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-calcFare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "TaxiMeter/ManualEntryViewController.m"
          timestampString = "392958755.795462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"

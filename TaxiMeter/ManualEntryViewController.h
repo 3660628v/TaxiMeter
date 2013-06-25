@@ -19,16 +19,21 @@
 @property (strong, nonatomic) NSNumber *latitude;
 @property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) NSURLConnection *getCoord;
+@property (strong, nonatomic) NSURLConnection *getCurrentCoord;
+@property (strong, nonatomic) NSURLConnection *getCoordWithManual;
 @property (strong, nonatomic) NSURLConnection *getDistance;
 @property (strong, nonatomic) CLLocationManager *manager;
 @property (strong, nonatomic) CLLocation *myCurrentLocation;
 @property (nonatomic) int distance;
+@property (weak, nonatomic) IBOutlet UITextField *addressFrom;
 
+@property(strong, nonatomic) NSNumber *fromLatt;
+@property(strong, nonatomic) NSNumber *fromLngg;
 
 //Some helper method
 +(NSString *)generateURLGeoLocationWithAddress:(NSString *)address;
 +(NSString *)generateURLDistanceEnquiryFromLat:(float)fromLat fromLng:(float)fromLng toLat:(float)toLat toLng:(float)toLng;
--(void)checkDistance;
+-(void)checkDistanceWithManualfromAddress:(BOOL)manual;
 +(NSString *)getDistanceInKmWithData:(NSData *)data error:(NSError *)error;
 +(int)getDistanceinMeterWithData:(NSData *)data error:(NSError *)error;
 -(void)showAlertWithString:(NSString *)message;

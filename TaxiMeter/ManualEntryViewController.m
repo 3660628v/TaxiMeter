@@ -13,8 +13,8 @@
 @end
 
 @implementation ManualEntryViewController
-@synthesize addressTo, responseData, latitude, longitude, getCoord, getDistance, manager, myCurrentLocation, distance;
-
+@synthesize addressTo, responseData, latitude, longitude, getCoord, getDistance, manager, myCurrentLocation, distance, addressFrom, getCurrentCoord, fromLatt, fromLngg;
+@synthesize getCoordWithManual;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +34,10 @@
     manager.delegate = self;
     manager.distanceFilter = 5.0f;
     [manager startUpdatingLocation];
-
+    latitude = [[NSNumber alloc]initWithFloat:-1001];
+    longitude = [[NSNumber alloc]initWithFloat:-1001];
+    fromLatt = [[NSNumber alloc]initWithFloat:-1001];
+    fromLngg = [[NSNumber alloc]initWithFloat:-1001];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,14 +48,21 @@
 - (IBAction)calcFare:(id)sender {
     NSString *address = [[NSString alloc]init];
     address = [addressTo text];
+    NSString *_addressFrom = [NSString stringWithString:[addressFrom text]];
     if ([address length] == 0) {
-        [self showAlertWithString:@"Nothing is entered!"];
+        [self showAlertWithString:@"Where are you going?"];
         return;
     }
-    NSString *url = [[self class] generateURLGeoLocationWithAddress:address];
-//    NSLog(@"%@",url);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    getCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if ([_addressFrom length] == 0) {
+        NSString *url = [[self class] generateURLGeoLocationWithAddress:address];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        getCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    }
+    else{
+        NSString *url = [[self class]generateURLGeoLocationWithAddress:_addressFrom];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        getCurrentCoord = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    }
 }
 
 
@@ -81,6 +91,7 @@
     // convert to JSON
     NSError *myError = nil;
     if (connection == getCoord) {
+        NSLog(@"**************getCoord");
         Coord2D res = [[self class]getCoordJSONParserWithData:self.responseData error:myError];
         if (res.lattitude == -1000) {
             return;
@@ -88,32 +99,73 @@
         self.latitude = [NSNumber numberWithFloat:res.lattitude];
         self.longitude = [NSNumber numberWithFloat:res.longitude];
         NSLog(@"%@, %@", self.latitude, self.longitude);
-        [self checkDistance];
+        [self checkDistanceWithManualfromAddress:NO];
     }
     
-    if (connection == getDistance) {
+    else if (connection == getDistance) {
+        NSLog(@"**************getDistance");
         NSString *distance1 = [[self class]getDistanceInKmWithData:self.responseData error:myError];
         if (distance1 ==  nil) {
             return;
         }
         self.distance = [[self class]getDistanceinMeterWithData:self.responseData error:myError];
         NSLog(@"%@ %i", distance1, self.distance);
-        int fare = [self calFarewithDistance:8300];
+        int fare = [self calFarewithDistance:self.distance];
 
         UIAlertView *myAlert = [[UIAlertView alloc]initWithTitle:@"Fare" message:[NSString stringWithFormat:@"You are expected to pay about %d VND", fare] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [myAlert show];
 
     }
+    else if (connection == getCurrentCoord){
+        NSLog(@"**************getCurrentCoord");
+
+        Coord2D res = [[self class]getCoordJSONParserWithData:self.responseData error:myError];
+        if (res.lattitude == -1000) {
+            fromLatt = [NSNumber numberWithFloat:-1000];
+            fromLngg = [NSNumber numberWithFloat:-1000];
+            return;
+        }
+        self.fromLatt = [NSNumber numberWithFloat:res.lattitude];
+        self.fromLngg = [NSNumber numberWithFloat:res.longitude];
+        //NSLog(@"%@, %@", self.latitude, self.longitude);
+        NSString * url = [[self class] generateURLGeoLocationWithAddress:[addressTo text]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        getCoordWithManual = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    }
+    else if (connection == getCoordWithManual){
+        NSLog(@"**************getCoordWithManual");
+
+        Coord2D res = [[self class]getCoordJSONParserWithData:self.responseData error:myError];
+        if (res.lattitude == -1000) {
+            return;
+        }
+        self.latitude = [NSNumber numberWithFloat:res.lattitude];
+        self.longitude = [NSNumber numberWithFloat:res.longitude];
+        NSLog(@"%@, %@", self.latitude, self.longitude);
+        [self checkDistanceWithManualfromAddress:YES];
+
+    }
 }
 
--(void)checkDistance{
-    NSString *url = [[self class]generateURLDistanceEnquiryFromLat:myCurrentLocation.coordinate.latitude fromLng:myCurrentLocation.coordinate.longitude toLat:self.latitude.floatValue toLng:self.longitude.floatValue];
-    //Create a HTTP request
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    
-    //send the request
-    getDistance = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-
+-(void)checkDistanceWithManualfromAddress:(BOOL)manual{
+    if (!manual) {
+        NSString *url;
+        url = [[self class]generateURLDistanceEnquiryFromLat:myCurrentLocation.coordinate.latitude fromLng:myCurrentLocation.coordinate.longitude toLat:self.latitude.floatValue toLng:self.longitude.floatValue];
+        //Create a HTTP request
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        
+        //send the request
+        getDistance = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    }
+    else{
+        NSString *url;
+        url = [[self class]generateURLDistanceEnquiryFromLat:fromLatt.floatValue fromLng:fromLngg.floatValue toLat:self.latitude.floatValue toLng:self.longitude.floatValue];
+        //Create a HTTP request
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        
+        //send the request
+        getDistance = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{

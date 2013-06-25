@@ -328,6 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Manual Entry" id="GyC-I4-EdL"/>
                     <connections>
+                        <outlet property="addressFrom" destination="Zr0-p6-Bij" id="qqg-Wa-IuW"/>
                         <outlet property="addressTo" destination="CQL-6K-Tyj" id="Ddt-Fc-g1S"/>
                     </connections>
                 </viewController>
