@@ -4,6 +4,88 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--City Selection View Controller-->
+        <scene sceneID="w1b-C4-BXC">
+            <objects>
+                <viewController id="Pgf-aP-OEQ" customClass="CitySelectionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BfZ-2p-908">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCp-iS-1M6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="gwP-gf-52u"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pgf-aP-OEQ" id="bAn-zI-LX3"/>
+                                    <outlet property="delegate" destination="Pgf-aP-OEQ" id="nfO-eS-nLK"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjv-cK-BvR">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Take Me There!">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectCity:" destination="Pgf-aP-OEQ" eventType="touchUpInside" id="T6b-Vp-4zI"/>
+                                    <segue destination="82P-Wp-Bzs" kind="push" identifier="goToWebView" id="HaB-cQ-AQc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dCp-iS-1M6" firstAttribute="trailing" secondItem="BfZ-2p-908" secondAttribute="trailing" type="default" id="7pk-dU-VCm"/>
+                            <constraint firstItem="dCp-iS-1M6" firstAttribute="leading" secondItem="BfZ-2p-908" secondAttribute="leading" type="default" id="Ch8-pI-hQT"/>
+                            <constraint firstItem="Mjv-cK-BvR" firstAttribute="centerX" secondItem="dCp-iS-1M6" secondAttribute="centerX" type="default" id="etB-14-Jdy"/>
+                            <constraint firstItem="dCp-iS-1M6" firstAttribute="bottom" secondItem="BfZ-2p-908" secondAttribute="bottom" type="default" id="lKS-ee-B31"/>
+                            <constraint firstItem="Mjv-cK-BvR" firstAttribute="top" secondItem="BfZ-2p-908" secondAttribute="top" constant="120" id="peE-1Y-mJH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mr1-Tq-mQq"/>
+                    <connections>
+                        <outlet property="cityList" destination="dCp-iS-1M6" id="JW0-83-NBV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nlj-vC-IqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="514" y="806"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="2mk-aW-ybw">
+            <objects>
+                <viewController id="82P-Wp-Bzs" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pM5-lh-H6V">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-AE-1RC">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="82P-Wp-Bzs" id="B57-nO-ctw"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QEh-AE-1RC" firstAttribute="bottom" secondItem="pM5-lh-H6V" secondAttribute="bottom" type="default" id="Jcd-JA-2gG"/>
+                            <constraint firstItem="QEh-AE-1RC" firstAttribute="top" secondItem="pM5-lh-H6V" secondAttribute="top" type="default" id="K9Q-kB-l2x"/>
+                            <constraint firstItem="QEh-AE-1RC" firstAttribute="trailing" secondItem="pM5-lh-H6V" secondAttribute="trailing" type="default" id="XAD-XZ-pEM"/>
+                            <constraint firstItem="QEh-AE-1RC" firstAttribute="leading" secondItem="pM5-lh-H6V" secondAttribute="leading" type="default" id="uav-Wz-sdM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="33A-qr-6fK"/>
+                    <connections>
+                        <outlet property="webView" destination="QEh-AE-1RC" id="9Og-Zb-e2c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oui-Lf-jnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="514" y="1475"/>
+        </scene>
         <!--View Controller - Welcome to Vietnam!-->
         <scene sceneID="5">
             <objects>
@@ -109,6 +191,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Pgf-aP-OEQ" kind="push" id="c6Q-0E-AA3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgA-hp-bD7">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -312,6 +397,13 @@
         </scene>
     </scenes>
     <classes>
+        <class className="CitySelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CitySelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="selectCity:"/>
+                <relationship kind="outlet" name="cityList" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
         <class className="ManualEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManualEntryViewController.h"/>
             <relationships>
@@ -333,6 +425,12 @@
             <relationships>
                 <relationship kind="action" name="callPolice:"/>
                 <relationship kind="outlet" name="taxiPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="WebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
     </classes>

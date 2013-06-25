@@ -19,6 +19,10 @@
 		1C0C7DAF176B1EB800BB8B9D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */; };
 		1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C7DB1176B1EB800BB8B9D /* ViewController.m */; };
 		1C0C7DB9176B1FC900BB8B9D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */; };
+		1C968FF41779479F00C6EC24 /* CitySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */; };
+		1C968FF61779487400C6EC24 /* cityURLList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C968FF51779487400C6EC24 /* cityURLList.plist */; };
+		1C968FF81779627500C6EC24 /* cityName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C968FF71779627400C6EC24 /* cityName.plist */; };
+		1C968FFB1779663800C6EC24 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C968FFA1779663800C6EC24 /* WebViewController.m */; };
 		1CC84C56176B24C900728786 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC84C55176B24C900728786 /* MapViewController.m */; };
 		1CC84C58176B27D000728786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC84C57176B27D000728786 /* MapKit.framework */; };
 		1CC84C5B176B3B5000728786 /* ManualEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC84C5A176B3B5000728786 /* ManualEntryViewController.m */; };
@@ -43,6 +47,12 @@
 		1C0C7DB1176B1EB800BB8B9D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C634A48176C0C2C00572F7E /* MapStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStruct.h; sourceTree = "<group>"; };
+		1C968FF21779479F00C6EC24 /* CitySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelectionViewController.h; sourceTree = "<group>"; };
+		1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelectionViewController.m; sourceTree = "<group>"; };
+		1C968FF51779487400C6EC24 /* cityURLList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityURLList.plist; sourceTree = "<group>"; };
+		1C968FF71779627400C6EC24 /* cityName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityName.plist; sourceTree = "<group>"; };
+		1C968FF91779663800C6EC24 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		1C968FFA1779663800C6EC24 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1CC84C54176B24C900728786 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		1CC84C55176B24C900728786 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		1CC84C57176B27D000728786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +111,10 @@
 				1C0C7DA4176B1EB700BB8B9D /* AppDelegate.h */,
 				1C0C7DA5176B1EB700BB8B9D /* AppDelegate.m */,
 				1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */,
+				1C968FF21779479F00C6EC24 /* CitySelectionViewController.h */,
+				1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */,
+				1C968FF91779663800C6EC24 /* WebViewController.h */,
+				1C968FFA1779663800C6EC24 /* WebViewController.m */,
 				1CC84C59176B3B5000728786 /* ManualEntryViewController.h */,
 				1CC84C5A176B3B5000728786 /* ManualEntryViewController.m */,
 				1C634A48176C0C2C00572F7E /* MapStruct.h */,
@@ -123,6 +137,8 @@
 				1C0C7DA7176B1EB700BB8B9D /* Default.png */,
 				1C0C7DA9176B1EB700BB8B9D /* Default@2x.png */,
 				1C0C7DAB176B1EB700BB8B9D /* Default-568h@2x.png */,
+				1C968FF51779487400C6EC24 /* cityURLList.plist */,
+				1C968FF71779627400C6EC24 /* cityName.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,6 +199,8 @@
 				1C0C7DAA176B1EB700BB8B9D /* Default@2x.png in Resources */,
 				1C0C7DAC176B1EB700BB8B9D /* Default-568h@2x.png in Resources */,
 				1C0C7DAF176B1EB800BB8B9D /* MainStoryboard.storyboard in Resources */,
+				1C968FF61779487400C6EC24 /* cityURLList.plist in Resources */,
+				1C968FF81779627500C6EC24 /* cityName.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +216,8 @@
 				1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */,
 				1CC84C56176B24C900728786 /* MapViewController.m in Sources */,
 				1CC84C5B176B3B5000728786 /* ManualEntryViewController.m in Sources */,
+				1C968FF41779479F00C6EC24 /* CitySelectionViewController.m in Sources */,
+				1C968FFB1779663800C6EC24 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
