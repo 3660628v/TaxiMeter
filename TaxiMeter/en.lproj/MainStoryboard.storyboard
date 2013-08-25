@@ -86,6 +86,57 @@
             </objects>
             <point key="canvasLocation" x="514" y="1475"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="hGe-jE-G9V">
+            <objects>
+                <viewController id="l59-5i-WoC" customClass="AboutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XtS-ik-2Ri">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzR-cu-J6J">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="257" id="5M2-is-e6d"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Duc Hieu Pham" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlQ-wh-vth">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="DmL-HQ-oSF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Unviersity of Illinois at Urbana Champaign" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="230" translatesAutoresizingMaskIntoConstraints="NO" id="PxW-KK-KJc">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eka-Jl-Z5t"/>
+                                    <constraint firstAttribute="width" constant="230" id="yz6-va-9VJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93240489130434778" green="0.89536921855876139" blue="0.90106170124896867" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="MzR-cu-J6J" firstAttribute="trailing" secondItem="XtS-ik-2Ri" secondAttribute="trailing" type="default" id="Fwm-fW-CwK"/>
+                            <constraint firstItem="PxW-KK-KJc" firstAttribute="top" secondItem="IlQ-wh-vth" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="P6E-pU-Li4"/>
+                            <constraint firstItem="IlQ-wh-vth" firstAttribute="top" secondItem="MzR-cu-J6J" secondAttribute="bottom" constant="30" type="user" id="SzI-PP-FH1"/>
+                            <constraint firstItem="IlQ-wh-vth" firstAttribute="centerX" secondItem="PxW-KK-KJc" secondAttribute="centerX" type="default" id="nd6-4E-ibR"/>
+                            <constraint firstItem="IlQ-wh-vth" firstAttribute="centerX" secondItem="MzR-cu-J6J" secondAttribute="centerX" type="default" id="p3g-S3-5KW"/>
+                            <constraint firstItem="MzR-cu-J6J" firstAttribute="top" secondItem="XtS-ik-2Ri" secondAttribute="top" type="default" id="sWl-Hc-AuI"/>
+                            <constraint firstItem="MzR-cu-J6J" firstAttribute="leading" secondItem="XtS-ik-2Ri" secondAttribute="leading" type="default" id="tIW-5s-MRb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9jD-y3-H1c"/>
+                    <connections>
+                        <outlet property="authorPhoto" destination="MzR-cu-J6J" id="7Fy-8Z-Cae"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8eh-wK-VhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="78" y="312"/>
+        </scene>
         <!--View Controller - Welcome to Vietnam!-->
         <scene sceneID="5">
             <objects>
@@ -96,7 +147,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InI-KC-v5z">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="I'm done choosing">
+                                <state key="normal" title="See the Map">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -156,11 +207,11 @@
                             <constraint firstItem="9ww-fT-jv1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="65" id="ARx-qt-HW6"/>
                             <constraint firstItem="9ww-fT-jv1" firstAttribute="baseline" secondItem="QC7-Ls-ona" secondAttribute="baseline" type="default" id="CnL-FI-pmB"/>
                             <constraint firstItem="qru-DK-y5C" firstAttribute="centerX" secondItem="InI-KC-v5z" secondAttribute="centerX" type="default" id="Cq9-Ow-sbg"/>
+                            <constraint firstItem="Nfu-1r-ZVp" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="EXZ-6E-adL"/>
                             <constraint firstItem="qru-DK-y5C" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="FN4-FH-2QO"/>
                             <constraint firstItem="qru-DK-y5C" firstAttribute="trailing" secondItem="QC7-Ls-ona" secondAttribute="trailing" type="default" id="NBX-2A-IQU"/>
-                            <constraint firstItem="Nfu-1r-ZVp" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="Ut3-4M-UeT"/>
+                            <constraint firstItem="InI-KC-v5z" firstAttribute="top" secondItem="9ww-fT-jv1" secondAttribute="bottom" constant="20" type="user" id="T3H-2n-Ngf"/>
                             <constraint firstItem="Nfu-1r-ZVp" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="d4x-hX-5AW"/>
-                            <constraint firstItem="InI-KC-v5z" firstAttribute="top" secondItem="3" secondAttribute="top" constant="122" id="iRn-Qz-hHv"/>
                             <constraint firstItem="InI-KC-v5z" firstAttribute="centerX" secondItem="Nfu-1r-ZVp" secondAttribute="centerX" type="default" id="rne-pk-peV"/>
                             <constraint firstItem="Nfu-1r-ZVp" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="vY5-1E-ODo"/>
                         </constraints>
@@ -217,6 +268,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="l59-5i-WoC" kind="push" id="6vc-1m-H8k"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="476-z0-57Y">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -295,23 +349,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlz-FZ-uAN">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="AVB-B0-pXu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="My current location">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Wlz-FZ-uAN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="K5Z-ZT-aSj"/>
                             <constraint firstItem="gkL-E5-iys" firstAttribute="baseline" secondItem="Zr0-p6-Bij" secondAttribute="baseline" type="default" id="LsV-2f-tWR"/>
                             <constraint firstAttribute="trailing" secondItem="5hQ-ME-IHt" secondAttribute="trailing" constant="19" id="NpI-gX-j3K"/>
                             <constraint firstItem="CQL-6K-Tyj" firstAttribute="leading" secondItem="Zr0-p6-Bij" secondAttribute="leading" type="default" id="PLN-Fu-eyl"/>
@@ -320,7 +360,6 @@
                             <constraint firstItem="5hQ-ME-IHt" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="170" id="a4k-u2-yku"/>
                             <constraint firstItem="5hQ-ME-IHt" firstAttribute="trailing" secondItem="CQL-6K-Tyj" secondAttribute="trailing" type="default" id="a9X-bG-oxi"/>
                             <constraint firstItem="Zr0-p6-Bij" firstAttribute="leading" secondItem="gkL-E5-iys" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="avw-pE-asH"/>
-                            <constraint firstItem="Wlz-FZ-uAN" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="74" id="gFp-XD-xlc"/>
                             <constraint firstItem="CQL-6K-Tyj" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="125" id="tkc-dd-btR"/>
                             <constraint firstItem="SiK-gd-VF2" firstAttribute="top" secondItem="rXr-lL-Lc4" secondAttribute="top" constant="130" id="vsf-LT-cYS"/>
                             <constraint firstItem="Zr0-p6-Bij" firstAttribute="trailing" secondItem="CQL-6K-Tyj" secondAttribute="trailing" type="default" id="z6U-nO-k1t"/>
@@ -398,6 +437,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
         <class className="CitySelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CitySelectionViewController.h"/>
             <relationships>
@@ -409,6 +451,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManualEntryViewController.h"/>
             <relationships>
                 <relationship kind="action" name="calcFare:"/>
+                <relationship kind="outlet" name="addressFrom" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="addressTo" candidateClass="UITextField"/>
             </relationships>
         </class>

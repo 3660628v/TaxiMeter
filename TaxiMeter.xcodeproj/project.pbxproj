@@ -19,6 +19,8 @@
 		1C0C7DAF176B1EB800BB8B9D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */; };
 		1C0C7DB2176B1EB800BB8B9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C7DB1176B1EB800BB8B9D /* ViewController.m */; };
 		1C0C7DB9176B1FC900BB8B9D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */; };
+		1C41750B17C9D0C600FF762B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C41750A17C9D0C600FF762B /* AboutViewController.m */; };
+		1C41750D17C9D29F00FF762B /* Hieu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C41750C17C9D29F00FF762B /* Hieu.jpg */; };
 		1C968FF41779479F00C6EC24 /* CitySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */; };
 		1C968FF61779487400C6EC24 /* cityURLList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C968FF51779487400C6EC24 /* cityURLList.plist */; };
 		1C968FF81779627500C6EC24 /* cityName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C968FF71779627400C6EC24 /* cityName.plist */; };
@@ -46,6 +48,9 @@
 		1C0C7DB0176B1EB800BB8B9D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1C0C7DB1176B1EB800BB8B9D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1C0C7DB8176B1FC900BB8B9D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1C41750917C9D0C600FF762B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		1C41750A17C9D0C600FF762B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		1C41750C17C9D29F00FF762B /* Hieu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hieu.jpg; sourceTree = "<group>"; };
 		1C634A48176C0C2C00572F7E /* MapStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStruct.h; sourceTree = "<group>"; };
 		1C968FF21779479F00C6EC24 /* CitySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelectionViewController.h; sourceTree = "<group>"; };
 		1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelectionViewController.m; sourceTree = "<group>"; };
@@ -111,6 +116,8 @@
 				1C0C7DA4176B1EB700BB8B9D /* AppDelegate.h */,
 				1C0C7DA5176B1EB700BB8B9D /* AppDelegate.m */,
 				1C0C7DAD176B1EB700BB8B9D /* MainStoryboard.storyboard */,
+				1C41750917C9D0C600FF762B /* AboutViewController.h */,
+				1C41750A17C9D0C600FF762B /* AboutViewController.m */,
 				1C968FF21779479F00C6EC24 /* CitySelectionViewController.h */,
 				1C968FF31779479F00C6EC24 /* CitySelectionViewController.m */,
 				1C968FF91779663800C6EC24 /* WebViewController.h */,
@@ -135,6 +142,7 @@
 				1C0C7DA1176B1EB700BB8B9D /* main.m */,
 				1C0C7DA3176B1EB700BB8B9D /* TaxiMeter-Prefix.pch */,
 				1C0C7DA7176B1EB700BB8B9D /* Default.png */,
+				1C41750C17C9D29F00FF762B /* Hieu.jpg */,
 				1C0C7DA9176B1EB700BB8B9D /* Default@2x.png */,
 				1C0C7DAB176B1EB700BB8B9D /* Default-568h@2x.png */,
 				1C968FF51779487400C6EC24 /* cityURLList.plist */,
@@ -201,6 +209,7 @@
 				1C0C7DAF176B1EB800BB8B9D /* MainStoryboard.storyboard in Resources */,
 				1C968FF61779487400C6EC24 /* cityURLList.plist in Resources */,
 				1C968FF81779627500C6EC24 /* cityName.plist in Resources */,
+				1C41750D17C9D29F00FF762B /* Hieu.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +227,7 @@
 				1CC84C5B176B3B5000728786 /* ManualEntryViewController.m in Sources */,
 				1C968FF41779479F00C6EC24 /* CitySelectionViewController.m in Sources */,
 				1C968FFB1779663800C6EC24 /* WebViewController.m in Sources */,
+				1C41750B17C9D0C600FF762B /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
